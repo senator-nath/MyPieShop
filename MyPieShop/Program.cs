@@ -1,47 +1,47 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using MyPieShop;
+using MyPieShop.HR;
 
-//int amount = 1248;
-//int month = 12;
-//int bonus = 1000;
+Employee.taxRate = 0.2;
+Console.WriteLine("creating an employee");
+Console.WriteLine("-------------\n");
 
-//int yearlyWage = Utilities.calculateYearlyWage(amount, month, bonus);
-//Console.WriteLine($"yraely wage is : {yearlyWage}");
-
-Utilities.usingEscapeCharacters();
-
-
-
-
-
+Employee Nathaniel = new Employee("Nathaniel", "Osana", "nathanielosana@gmail.com", new DateTime(1993, 5, 5), 25, EmployeeType.Manager);
+Employee Racheal = new Employee("Racheal", "Uyi", "rachealuyi@gmail.com", new DateTime(2000, 5, 25), 25, EmployeeType.Researcher);
+Employee Osahon = new Employee("Osahon", "Ighodaro", "OsahonIghodaro@gmail.com", new DateTime(1990, 5, 6), 25, EmployeeType.Researcher);
+Employee Favour = new Employee("Favour", "Ighodaro", "favourighodaro@gmail.com", new DateTime(1998, 5, 5), 25, EmployeeType.Researcher);
+Employee Peculiar = new Employee("Peculiar", "Osana", "peculiarosana@gmail.com", new DateTime(1995, 2, 1), 25, EmployeeType.Researcher);
+Employee Divine = new Employee("Divine", "Favour", "divinefavour@gmail.com", new DateTime(2000, 5, 3), 25, EmployeeType.Researcher);
+Employee Royalty = new Employee("Royalty", "Uyi", "royaltyuyi@gmail.com", new DateTime(2003, 7, 19), 25, EmployeeType.Researcher);
 
 
 
 
 
 
-//do
-//{
-//    Console.WriteLine("choose the action you want to do");
-//    Console.WriteLine("enter 1 to add employee");
-//    Console.WriteLine("enter 2 to update employee");
-//    Console.WriteLine("enter 3 to delete employee");
-//    Console.WriteLine("enter 99 to exit application");
-//    string selectAction = Console.ReadLine();
 
-//    switch (selectAction)
-//    {
-//        case "1":
-//            Console.WriteLine("adding employee"); break;
-//        case "2":
-//            Console.WriteLine("updating employee"); break;
-//        case "3":
-//            Console.WriteLine("deleting employee"); break;
-//        default:
-//            Console.WriteLine("invalid input"); break;
-//    }
-//} while (selectAction != "99");
+List<int> employeeIds = new List<int>();
+Console.WriteLine("how many employee IDs do you want to enter:");
+int length = int.Parse(Console.ReadLine());
+for (int i = 0; i < length; i++)
+{
+    Console.WriteLine("enter the employee id:");
+    int id = int.Parse(Console.ReadLine());
+    employeeIds.Add(id);
+}
 
-//Console.WriteLine("exiting application");
+List<Employee> employees = new List<Employee>();
 
+
+employees.Add(Racheal);
+employees.Insert(0, Nathaniel);
+employees.Add(Osahon);
+employees.Add(Favour);
+employees.Add(Peculiar);
+employees.Add(Divine);
+employees.Add(Royalty);
+
+foreach (Employee employee in employees)
+{
+    employee.displayEmployeeDetails();
+}
