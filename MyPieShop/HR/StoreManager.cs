@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyPieShop.HR
 {
-    enum EmployeeType
+    internal class StoreManager
     {
-        Sales,
-        Manager,
-        Researcher,
-        StoreManager
     }
 }
