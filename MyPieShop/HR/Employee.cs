@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyPieShop.HR
 {
-    internal class Employee
+    internal class Employee : IEmployee
     {
         private string firstName;
         private string lastName;
@@ -17,6 +17,7 @@ namespace MyPieShop.HR
         private double hourlyRate;
 
         private DateTime birthday;
+        private Address address;
 
         public static double taxRate = 0.15;
 
@@ -27,6 +28,8 @@ namespace MyPieShop.HR
         public string Email { get { return email; } set { email = value; } }
         public int NumbersOfHoursWorked { get { return numbersOfHoursWorked; } protected set { numbersOfHoursWorked = value; } }
         public double Wage { get { return wage; } set { wage = value; } }
+
+        public Address Address { get { return address; } set { address = value; } }
         public double HourlyRate
         {
             get { return hourlyRate; }
@@ -63,17 +66,31 @@ namespace MyPieShop.HR
             HourlyRate = hourlyRate;
 
         }
-
-        public void performWork()
+        public Employee(string firstName, string lastName, string email, DateTime birthDay, double hourlyRate, string street, string city, string houseNumber, string zipCode)
         {
-            performWork(minimalHourWorked);
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Birthday = birthDay;
+            HourlyRate = hourlyRate;
+            Address = new Address(street, city, houseNumber, zipCode);
+
         }
-        public void performWork(int numberOfHours)
+
+        public void PerformWork()
+        {
+            PerformWork(minimalHourWorked);
+        }
+        public void PerformWork(int numberOfHours)
         {
             numbersOfHoursWorked += numberOfHours;
             Console.WriteLine($"{FirstName} {lastName} has worked for {numberOfHours} hour(s)!");
         }
-        public double recieveWage(bool restHours = true)
+        public virtual void GiveBonus()
+        {
+            Console.WriteLine($"{FirstName}{LastName} recieve a generic bonus of 100");
+        }
+        public double RecieveWage(bool restHours = true)
         {
             double wageBeforeTax = 0.0;
 
@@ -86,7 +103,7 @@ namespace MyPieShop.HR
             return wage;
 
         }
-        public void displayEmployeeDetails()
+        public void DisplayEmployeeDetails()
         {
             Console.WriteLine($"\nfirst name:\t{FirstName} \nlast name: \t{LastName} \nemail: \t{Email} \nbirthday:\t{Birthday.ToShortDateString()}\n tax rate: \t{taxRate}");
 
@@ -95,6 +112,11 @@ namespace MyPieShop.HR
         public static void DisplayTaskRate()
         {
             Console.WriteLine($"the current tax rate is {taxRate}");
+        }
+
+        public void GiveComplement()
+        {
+            Console.WriteLine($"you have done a great job {FirstName}");
         }
     }
 }

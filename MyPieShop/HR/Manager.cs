@@ -16,5 +16,16 @@ namespace MyPieShop.HR
             numbersOfHoursWorked += 10;
             Console.WriteLine($"Manager {FirstName} {LastName} is now attending a long meeting");
         }
+        public override void GiveBonus()
+        {
+            if (numbersOfHoursWorked > 5)
+            {
+                Console.WriteLine($"Manager {FirstName} {LastName} recieve a management bonous of 500;");
+            }
+            else
+            {
+                Console.WriteLine($"Manager {FirstName} {LastName} recieve a management bonous of 500;");
+            }
+        }
     }
 }

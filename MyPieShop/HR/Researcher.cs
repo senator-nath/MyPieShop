@@ -17,5 +17,19 @@ namespace MyPieShop.HR
             get { return numberOfpieTasteInvented; }
             private set { numberOfpieTasteInvented = value; }
         }
+        public void ResearchNewPieTaste(int researchHours)
+        {
+            numbersOfHoursWorked += researchHours;
+            if (new Random().Next(100) > 50)
+            {
+                numberOfpieTasteInvented++;
+                Console.WriteLine($"Researcher {FirstName} {LastName} has invented a new pie taste total number of pie taste invented: {numberOfpieTasteInvented}");
+            }
+            else
+            {
+                Console.WriteLine($"Researcher {FirstName} {LastName} is working on a new pie taste");
+            }
+
+        }
     }
 }
